@@ -18,6 +18,12 @@
             <artifactId>javafx-controls</artifactId>
             <version>11</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <properties>
