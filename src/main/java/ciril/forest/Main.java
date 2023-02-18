@@ -1,11 +1,13 @@
 package ciril.forest;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Main {
+public class Main extends JFrame {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -20,15 +22,26 @@ public class Main {
         int[][] forest = new int[h][l];
         //remplir la foret
         getRandomForest(forest, h, l);
+
+        System.out.print("Saisir combien de points sont en feu : ");
+        int pointsEnFeu = sc.nextInt();
+        List<Point> pointsOnFire = new ArrayList<>();
+        for (int n = 0; n < pointsEnFeu; n++) {
+            System.out.print("Saisir la localisation du point de feu n° " + (n + 1) + "\n i : ");
+            int i = sc.nextInt();
+            System.out.print(" j : ");
+            int j = sc.nextInt();
+            changeState(forest, new Point(i, j));
+            pointsOnFire.add(new Point(i, j));
+        }
+        System.out.println("\n----------- Etat initial ----------- ");
         //afficher la foret
         displayForest(forest);
 
-        System.out.print("Saisir le point de feu\n i : ");
-        int i = sc.nextInt();
-        System.out.print(" j : ");
-        int j = sc.nextInt();
-
-        propagate(forest, new Point(i, j));
+        for (Point pointOnFire : pointsOnFire) {
+            propagate(forest, pointOnFire);
+        }
+        //
         //fermez scanner
         sc.close();
     }
@@ -36,6 +49,7 @@ public class Main {
     static void getRandomForest(int[][] forest, int h, int l) {
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < l; j++) {
+                //si on veut remplir la foret avec des cases vides par exemple (y'a pas d'arbres)
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 1);
                 forest[i][j] = randomNum;
             }
@@ -44,14 +58,14 @@ public class Main {
 
     static void displayForest(int[][] forest) {
         for (int i = 0; i < forest.length; i++) {
-            System.out.print(" ___ ");
+            System.out.print(" ___");
         }
         System.out.println();
         for (int i = 0; i < forest.length; i++) {
             for (int j = 0; j < forest[0].length; j++) {
                 System.out.print("| " + forest[i][j] + "\t");
             }
-            System.out.println();
+            System.out.println("|");
         }
         for (int i = 0; i < forest.length; i++) {
             System.out.print(" ___");
@@ -87,16 +101,16 @@ public class Main {
         return null;
     }
 
-    static void displatNeighbors(int[][] forest, Point point) {
+    static void displayNeighbors(int[][] forest, Point point) {
         List<Point> neighbors = getNeighbors(forest, point.getI(), point.getJ());
-        if(neighbors!=null && !neighbors.isEmpty()){
-            System.out.println("La liste des voisins de "+point+" sont :");
+        if (neighbors != null && !neighbors.isEmpty()) {
+            System.out.println("La liste des voisins de " + point + " sont :");
             for (Point neighbor : neighbors) {
                 System.out.print(neighbor);
                 System.out.print("\t");
             }
             System.out.println();
-        }else{
+        } else {
             System.out.println("Pas de voisins !");
         }
 
@@ -116,22 +130,24 @@ public class Main {
         }
     }
 
-    static  void changeStateNeighbors(int[][] forest,List<Point> neighbors){
-        for(Point neighbor: neighbors){
-            changeState(forest,neighbor);
+    static void changeStateNeighbors(int[][] forest, List<Point> neighbors) {
+        for (Point neighbor : neighbors) {
+            changeState(forest, neighbor);
         }
     }
+
     static void propagate(int[][] forest, Point pointOnFire) {
         //allumer le feu
-        changeState(forest,pointOnFire);
+        //changeState(forest, pointOnFire);
         //afficher la liste des voisins de la case en feu
-        displatNeighbors(forest, pointOnFire);
-        //changer l'état de la case en feu
-        changeState(forest,pointOnFire);
+        displayNeighbors(forest, pointOnFire);
+
         //charger la liste des voisins
         List<Point> neighbors = getNeighbors(forest, pointOnFire.getI(), pointOnFire.getJ());
-        //changer l'état des voisin de la case en feu
-        changeStateNeighbors(forest,neighbors);
+        //changer l'état des voisins de la case en feu
+        changeStateNeighbors(forest, neighbors);
+        //changer l'état de la case en feu
+        changeState(forest, pointOnFire);
         //afficher la foret à l'instant t+1
         displayForest(forest);
 
