@@ -87,10 +87,11 @@ public class Location {
     /**
      * Method to generate a probability according to the input number
      * Exemple : if nbProbabilty = 5 then the probabilty = 1/5 = 20%
+     *
      * @param nbProbabilty integer for the number of probabilty
      * @return boolean to apply probability
      */
     public boolean isPropagable(int nbProbabilty) {
-        return new Random().nextInt(nbProbabilty) == 0;
+        return nbProbabilty == 0 ? false : new Random().nextInt(nbProbabilty) == 0;
     }
 }
