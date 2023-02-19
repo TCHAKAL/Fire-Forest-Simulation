@@ -54,6 +54,10 @@ public class MainApplication {
             for (Location locationOnFire : pointsOnFire) {
                 Simulation.propagate(forest, locationOnFire,p);
             }
+            //Afficher l'état initail de la foret
+            System.out.println("\n----------- Etat Fianl ----------- ");
+            forest.displayForest();
+           Fenetre simulation = new Fenetre(forest);
         }
     }
 }
