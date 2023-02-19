@@ -1,9 +1,9 @@
-package ciril.forest.app;
+package ciril.app;
 
-import ciril.forest.models.Forest;
-import ciril.forest.models.Tree;
-import ciril.forest.models.Simulation;
-import ciril.forest.ui.Window;
+import ciril.forest.Forest;
+import ciril.forest.Tree;
+import ciril.simulation.Simulation;
+import ciril.ui.Window;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4085bda1-4e12-440f-b8c4-20ca82b057a8" name="Changes" comment="Ajouter la partie UI avec Java Swing">
+    <list default="true" id="4085bda1-4e12-440f-b8c4-20ca82b057a8" name="Changes" comment="Renommer Location à Tree">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/staticUtils/StaticUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ForestTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/LocationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SimulationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/app/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/app/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/models/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/models/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Fenetre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +22,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -65,19 +68,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
-    <configuration name="Fenetre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ciril.forest.ciril.ui.Fenetre" />
-      <module name="Fire-Forest-Simulation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ciril.forest.ciril.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IhmTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="IhmTest" />
       <module name="Fire-Forest-Simulation" />
@@ -124,13 +114,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ForestTest.shouldGenerateRandomForest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Fire-Forest-Simulation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ForestTest" />
+      <option name="METHOD_NAME" value="shouldGenerateRandomForest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.ForestTest.shouldGenerateRandomForest" />
         <item itemvalue="Application.IhmTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Window" />
-        <item itemvalue="Application.Fenetre" />
       </list>
     </recent_temporary>
   </component>
@@ -145,7 +145,7 @@
       <workItem from="1676652992033" duration="7034000" />
       <workItem from="1676709121720" duration="1442000" />
       <workItem from="1676734211318" duration="11807000" />
-      <workItem from="1676794396790" duration="23359000" />
+      <workItem from="1676794396790" duration="26851000" />
     </task>
     <task id="LOCAL-00001" summary="Fonctionnement basique propagation totale">
       <created>1676711164135</created>
@@ -210,7 +210,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676818041669</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="UI : rafrichir l'état de la foret en temps réél">
+      <created>1676828976164</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676828976164</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Renommer Location à Tree">
+      <created>1676832019419</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1676832019419</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +251,8 @@
     <MESSAGE value="Ajouter la condition si la probabilité de propagation est 0" />
     <MESSAGE value="Implimenter le main application pour tester la simulation de feu" />
     <MESSAGE value="Ajouter la partie UI avec Java Swing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajouter la partie UI avec Java Swing" />
+    <MESSAGE value="UI : rafrichir l'état de la foret en temps réél" />
+    <MESSAGE value="Renommer Location à Tree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renommer Location à Tree" />
   </component>
 </project>
