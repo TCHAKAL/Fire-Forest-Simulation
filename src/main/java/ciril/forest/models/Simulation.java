@@ -1,5 +1,7 @@
 package ciril.forest.models;
 
+import ciril.forest.ui.Window;
+
 import java.util.List;
 
 public class Simulation {
@@ -57,8 +59,9 @@ public class Simulation {
      * @param forest         the froest in question
      * @param locationOnFire cell on fire
      * @param probability    integer for the number of probabilty for exemple 1 is 100% 2 is 1/2 == 50% ...
+     * @param simulation
      */
-    public static void propagate(Forest forest, Location locationOnFire, int probability) {
+    public static void propagate(Forest forest, Location locationOnFire, int probability, Window simulation) throws InterruptedException {
 
         //afficher la liste des voisins de la case en feu
         //locationOnFire.displayNeighbors(forest);
@@ -71,11 +74,11 @@ public class Simulation {
         changeState(forest, locationOnFire);
         //afficher la foret à l'instant t+1
         forest.displayForest();
-
+        simulation.displayForest(forest);
         //Pour chaque voisin à l'état 0 (arbre vivant) alors propager ( appel récursive)
         for (Location neighbor : neighbors) {
             if (forest.getGrille()[neighbor.getX()][neighbor.getY()] == 1) {
-                propagate(forest, neighbor, probability);
+                propagate(forest, neighbor, probability, simulation);
             }
         }
     }

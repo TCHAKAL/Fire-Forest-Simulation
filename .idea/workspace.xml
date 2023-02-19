@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4085bda1-4e12-440f-b8c4-20ca82b057a8" name="Changes" comment="Implimenter le main application pour tester la simulation de feu">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Fenetre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Grille.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="4085bda1-4e12-440f-b8c4-20ca82b057a8" name="Changes" comment="Ajouter la partie UI avec Java Swing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/Point.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/app/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/app/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/models/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/models/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Fenetre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ciril/forest/ui/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +46,6 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
     "last_opened_file_path": "C:/Users/LAPTOBEY/Documents/Java projects/Fire Forest Simulation",
@@ -83,6 +78,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IhmTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="IhmTest" />
+      <module name="Fire-Forest-Simulation" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ciril.forest.Main" />
       <module name="Fire-Forest-Simulation" />
@@ -109,21 +111,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ciril.forest.fireforestui.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ciril.forest.fireforestui.HelloApplication" />
-      <module name="Fire-Forest-UI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ciril.forest.fireforestui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ciril.forest.ui.Fenetre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ciril.forest.ui.Fenetre" />
+    <configuration name="Window" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ciril.forest.ui.Window" />
       <module name="Fire-Forest-Simulation" />
       <extension name="coverage">
         <pattern>
@@ -138,10 +127,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.IhmTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.ciril.forest.ui.Fenetre" />
+        <item itemvalue="Application.Window" />
         <item itemvalue="Application.Fenetre" />
-        <item itemvalue="Application.ciril.forest.fireforestui.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +145,7 @@
       <workItem from="1676652992033" duration="7034000" />
       <workItem from="1676709121720" duration="1442000" />
       <workItem from="1676734211318" duration="11807000" />
-      <workItem from="1676794396790" duration="16970000" />
+      <workItem from="1676794396790" duration="23359000" />
     </task>
     <task id="LOCAL-00001" summary="Fonctionnement basique propagation totale">
       <created>1676711164135</created>
@@ -207,7 +196,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676810679312</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ajouter la partie UI avec Java Swing">
+      <created>1676818014326</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818014326</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Ajouter la partie UI avec Java Swing">
+      <created>1676818041669</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676818041669</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +236,7 @@
     <MESSAGE value="ajouter la condition si la probabilité de propagation est 0" />
     <MESSAGE value="Ajouter la condition si la probabilité de propagation est 0" />
     <MESSAGE value="Implimenter le main application pour tester la simulation de feu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implimenter le main application pour tester la simulation de feu" />
+    <MESSAGE value="Ajouter la partie UI avec Java Swing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajouter la partie UI avec Java Swing" />
   </component>
 </project>

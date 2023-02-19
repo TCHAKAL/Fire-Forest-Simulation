@@ -3,7 +3,7 @@ package ciril.forest.app;
 import ciril.forest.models.Forest;
 import ciril.forest.models.Location;
 import ciril.forest.models.Simulation;
-import ciril.forest.ui.Fenetre;
+import ciril.forest.ui.Window;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class MainApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         while (true) {
             //Demander à l'utilisateur la largeur et la hauteur
@@ -47,17 +47,20 @@ public class MainApplication {
             //Afficher l'état initail de la foret
             System.out.println("\n----------- Etat initial ----------- ");
             forest.displayForest();
+            Window simulation = new Window();
+            simulation.displayForest(forest);
+
             //Demander à l'utilisateur la probabilité de propagation
             System.out.print("Saisir la probabilité de propagation (exemple:1 pour 100%, 2 pour 50%, 3 pour 33%.....) : ");
             int p = sc.nextInt();
             //Pour chaque point en feu on fait la simulation de la propagation
             for (Location locationOnFire : pointsOnFire) {
-                Simulation.propagate(forest, locationOnFire,p);
+                Simulation.propagate(forest, locationOnFire,p,simulation);
             }
             //Afficher l'état initail de la foret
             System.out.println("\n----------- Etat Fianl ----------- ");
             forest.displayForest();
-           Fenetre simulation = new Fenetre(forest);
+            simulation.displayForest(forest);
         }
     }
 }
