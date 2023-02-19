@@ -1,4 +1,4 @@
-package ciril.forest.ui;
+package ciril.ui;
 
 import javax.swing.JButton;
 

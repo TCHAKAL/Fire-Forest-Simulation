@@ -1,6 +1,6 @@
-package ciril.forest.ui;
+package ciril.ui;
 
-import ciril.forest.models.Forest;
+import ciril.forest.Forest;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package ciril.forest.models;
+package ciril.forest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
