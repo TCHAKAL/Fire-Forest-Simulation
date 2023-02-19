@@ -13,9 +13,9 @@ import java.util.Random;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Location {
+public class Tree {
 
-    //Un point est représenté par ses coordonnées dans la grille x et y
+    //Un arbre est représenté par ses coordonnées dans la grille x et y
     private int x;
     private int y;
 
@@ -25,12 +25,12 @@ public class Location {
     }
 
     /**
-     * Return list of cell neighbors of this location
+     * Return list of trees neighbors of this tree
      *
      * @param forest the forest in question
-     * @return list of neighbors
+     * @return list of trees neighbors
      */
-    public List<Location> getNeighbors(Forest forest) {
+    public List<Tree> getNeighbors(Forest forest) {
         //Les voisins de forest(x,y) sont forest(x, y+1), forest(x, y-1), forest(x-1, y), forest(x+1,y)
         if (forest != null) {
             //Récupérer les dimentions de la foret
@@ -39,22 +39,22 @@ public class Location {
 
             if (l > 0 && h > 0) {
                 //Déclarer la liste des voisins
-                List<Location> neighbors = new ArrayList<>();
+                List<Tree> neighbors = new ArrayList<>();
                 //Voisin à droite
                 if (x + 1 < l) {
-                    neighbors.add(new Location(x + 1, y));
+                    neighbors.add(new Tree(x + 1, y));
                 }
                 //Voisin à gauche
                 if (0 <= x - 1) {
-                    neighbors.add(new Location(x - 1, y));
+                    neighbors.add(new Tree(x - 1, y));
                 }
                 //Voisin au dessus
                 if (0 <= y - 1) {
-                    neighbors.add(new Location(x, y - 1));
+                    neighbors.add(new Tree(x, y - 1));
                 }
                 //Voisin en dessous
                 if (y + 1 < h) {
-                    neighbors.add(new Location(x, y + 1));
+                    neighbors.add(new Tree(x, y + 1));
                 }
                 return neighbors;
             }
@@ -63,18 +63,18 @@ public class Location {
     }
 
     /**
-     * Method to display the list of neighbors of this location in a forest
+     * Method to display the list of trees neighbors of this tree in a forest
      *
      * @param forest the forest in question
      */
     public void displayNeighbors(Forest forest) {
         //Charger la liste des voisins
-        List<Location> neighbors = getNeighbors(forest);
+        List<Tree> neighbors = getNeighbors(forest);
         //Si la liste n'est pas vide
         if (neighbors != null && !neighbors.isEmpty()) {
             //Afficher les voisins à droite, à gauche, au dessus et en dessous
             System.out.println("La liste des voisins de (" + x + "," + y + ") sont :");
-            for (Location neighbor : neighbors) {
+            for (Tree neighbor : neighbors) {
                 System.out.print(neighbor);
                 System.out.print("\t");
             }

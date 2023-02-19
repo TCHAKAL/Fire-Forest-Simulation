@@ -1,7 +1,7 @@
 package ciril.forest.app;
 
 import ciril.forest.models.Forest;
-import ciril.forest.models.Location;
+import ciril.forest.models.Tree;
 import ciril.forest.models.Simulation;
 import ciril.forest.ui.Window;
 
@@ -28,7 +28,7 @@ public class MainApplication {
             System.out.print("Saisir combien de points sont en feu : ");
             int nbPointOnFire = sc.nextInt();
             //Déclarer la liste qui va contenir les points en feu
-            List<Location> pointsOnFire = new ArrayList<>();
+            List<Tree> pointsOnFire = new ArrayList<>();
 
             //Demander à l'utilisateur les coordonnées de chaque point de feu
             for (int n = 0; n < nbPointOnFire; n++) {
@@ -37,11 +37,11 @@ public class MainApplication {
                 System.out.print(" y (entre 0 et "+h+"): ");
                 int y = sc.nextInt();
                 //Vérifier si le point n'est pas déjà insérer dans la liste
-                if(!pointsOnFire.contains( new Location(x, y))){
+                if(!pointsOnFire.contains( new Tree(x, y))){
                     //Changer l'état du point en feu
-                    Simulation.changeState(forest, new Location(x, y));
+                    Simulation.changeState(forest, new Tree(x, y));
                     //Ajouter le point dans la liste des points en feu
-                    pointsOnFire.add(new Location(x, y));
+                    pointsOnFire.add(new Tree(x, y));
                 }
             }
             //Afficher l'état initail de la foret
@@ -54,8 +54,8 @@ public class MainApplication {
             System.out.print("Saisir la probabilité de propagation (exemple:1 pour 100%, 2 pour 50%, 3 pour 33%.....) : ");
             int p = sc.nextInt();
             //Pour chaque point en feu on fait la simulation de la propagation
-            for (Location locationOnFire : pointsOnFire) {
-                Simulation.propagate(forest, locationOnFire,p,simulation);
+            for (Tree treeOnFire : pointsOnFire) {
+                Simulation.propagate(forest, treeOnFire,p,simulation);
             }
             //Afficher l'état initail de la foret
             System.out.println("\n----------- Etat Fianl ----------- ");
