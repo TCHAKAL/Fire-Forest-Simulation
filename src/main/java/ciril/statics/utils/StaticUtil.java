@@ -1,4 +1,4 @@
-package ciril.forest.staticUtils;
+package ciril.statics.utils;
 
 public interface StaticUtil {
 
