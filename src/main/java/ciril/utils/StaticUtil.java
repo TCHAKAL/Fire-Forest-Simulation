@@ -10,7 +10,7 @@ public interface StaticUtil {
     public static final String FINAL_STATE = "\n----------- Etat fianl -----------  ";
     public static final String ASK_FOR_PROBABILITY = "Veuillez renseigner la probabilité de propagation en % : ";
     public static final String NB_TREES = "Nombre d'arbres : ";
-    public static final String NB_TREES_ASH = "Nombre d'arbres reduites en cendre : ";
+    public static final String NB_TREES_ASH = "Nombre d'arbres reduits en cendre : ";
     public static final String NB_STAGE_SIMULATION ="Nombre d'étapes de la simulation : ";
 
 }

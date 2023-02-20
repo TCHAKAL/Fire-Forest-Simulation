@@ -1,6 +1,5 @@
 package ciril.forest;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,26 +8,29 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class Forest {
 
     //Une foret est resprésenté par une grille 2D
     private int[][] grille;
+    private int nbAsh;
 
-    private int nbAsh = 0;
+
+    public Forest() {
+        this.nbAsh = 0;
+    }
 
     /**
      * Method that create a new forest with a random values
      *
-     * @param h height of the forest
-     * @param l width of the forest
+     * @param width  height of the forest
+     * @param height width of the forest
      */
-    public void getRandomForest(int h, int l) {
-        //Instancier la grille avec la hauteur h et la largeur l
-        grille = new int[h][l];
-        //Remplir les cases de la grille par des nombre aléatoire ( dans notre cas que des arbres vivante === 0 )
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < l; j++) {
+    public void getRandomForest(int width, int height) {
+        //Instancier la grille avec la hauteur et la largeur en entrée
+        grille = new int[width][height];
+        //Remplir les cases de la grille par des nombres aléatoires ( dans notre cas que des arbres vivante === 0 )
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 //si on veut remplir la foret avec des cases vides par exemple (y'a pas d'arbres)
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 1);
                 this.grille[i][j] = randomNum;
@@ -37,11 +39,11 @@ public class Forest {
     }
 
     /**
-     * Method to display a forest as a matrix 2D
+     * Method to display a forest as a matrix 2D in terminal
      */
     public void displayForest() {
         //Ajouter une ligne au dessus
-        for (int i = 0; i < this.grille.length; i++) {
+        for (int i = 0; i < this.grille[0].length; i++) {
             System.out.print(" ___");
         }
         System.out.println();
@@ -53,7 +55,7 @@ public class Forest {
             System.out.println("|");
         }
         //Ajouter une ligne au dessus
-        for (int i = 0; i < this.grille.length; i++) {
+        for (int i = 0; i < this.grille[0].length; i++) {
             System.out.print(" ___");
         }
         System.out.println();

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,6 +23,14 @@ public class Tree {
     public Tree(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tree tree = (Tree) o;
+        return x == tree.x && y == tree.y;
     }
 
     @Override
@@ -41,7 +50,6 @@ public class Tree {
             //Récupérer les dimentions de la foret
             int l = forest.getGrille().length, //largeur
                     h = forest.getGrille()[0].length; //hauteur
-
             if (l > 0 && h > 0) {
                 //Déclarer la liste des voisins
                 List<Tree> neighbors = new ArrayList<>();
@@ -68,7 +76,7 @@ public class Tree {
     }
 
     /**
-     * Method to display the list of trees neighbors of this tree in a forest
+     * Method to display the list of trees neighbors of this tree in a forest in the terminal
      *
      * @param forest the forest in question
      */
@@ -91,7 +99,6 @@ public class Tree {
 
     /**
      * Method to generate a probability according to the input number
-     * Exemple : if probabilty = 5 then the probabilty = 1/5 = 20%
      *
      * @param probabilty integer for the number of probabilty
      * @return boolean to apply probability

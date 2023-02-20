@@ -11,17 +11,16 @@ import java.util.List;
 @Getter
 @Setter
 public class Simulation {
-
-    private int nbStage =0;
+    private int nbStage = 0;
 
     /**
      * Change the state of cell in a forest
      * Dictionary of states :
      * 0 === living tree
      * 1 === burning tree
-     * 2 === tree in ash
+     * 2 === tree as ash
      *
-     * @param forest the forest where to change the state cell
+     * @param forest the forest where to change the state
      * @param tree   the tree to change the state
      */
     public static void changeState(Forest forest, Tree tree) {
@@ -33,7 +32,7 @@ public class Simulation {
                     break;
                 case 1:  //Case arbre en feu ==> elle passera à l'état cendre
                     forest.getGrille()[tree.getX()][tree.getY()] = 2;
-                    forest.setNbAsh(forest.getNbAsh()+1);
+                    forest.setNbAsh(forest.getNbAsh() + 1);
                     break;
             }
         }
@@ -47,7 +46,7 @@ public class Simulation {
      * @param listTrees
      * @param probability
      */
-    public static void changeStateListCellsWithProbability(Forest forest, List<Tree> listTrees, int probability) {
+    public static void changeStateListTreesWithProbability(Forest forest, List<Tree> listTrees, int probability) {
         //Pour chaque arbre on vérifie si l'arbre est dans la foret
         for (Tree tree : listTrees) {
             if (checkTreeIncideForest(forest, tree)) {
@@ -63,30 +62,29 @@ public class Simulation {
     }
 
     /**
-     * Method forest fire propagation simulation
+     * Method forest fire propagation windowSimulation
      *
-     * @param forest      the froest in question
-     * @param treeOnFire  cell on fire
-     * @param probability integer for the number of probabilty for exemple 1 is 100% 2 is 1/2 == 50% ...
-     * @param simulation
+     * @param forest           the froest in question
+     * @param treeOnFire       cell on fire
+     * @param probability      integer for the number of probabilty for exemple 1 is 100% 2 is 1/2 == 50% ...
+     * @param windowSimulation
      */
-    public void propagate(Forest forest, Tree treeOnFire, int probability, Window simulation) {
+    public void propagate(Forest forest, Tree treeOnFire, int probability, Window windowSimulation) {
         //Charger la liste des arbres voisins de l'arbre en feu
         List<Tree> neighbors = treeOnFire.getNeighbors(forest);
-        //Changer l'état des arbres voisins de l'arbre en feu avec la probalité donnée
-        changeStateListCellsWithProbability(forest, neighbors, probability);
+        //Changer l'état des arbres voisins de l'arbre en feu avec la propabilité donnée
+        changeStateListTreesWithProbability(forest, neighbors, probability);
         //changer l'état de l'arbre en feu à l'état cendre
         changeState(forest, treeOnFire);
         //afficher la foret à l'instant t+1
         //forest.displayForest();
-        simulation.displayForest(forest);
-        //Incrémenter le nombre d'état
-         setNbStage(getNbStage()+1);
-
-        //Pour chaque voisin à l'état 0 (arbre vivant) alors propager ( appel récursive)
+        windowSimulation.displayForest(forest);
+        //Incrémenter le nombre d'étapes
+        setNbStage(getNbStage() + 1);
+        //Pour chaque voisin à l'état 0 (arbre vivant) alors propager (appel récursive)
         for (Tree neighbor : neighbors) {
             if (forest.getGrille()[neighbor.getX()][neighbor.getY()] == 1) {
-                propagate(forest, neighbor, probability, simulation);
+                propagate(forest, neighbor, probability, windowSimulation);
             }
         }
     }
