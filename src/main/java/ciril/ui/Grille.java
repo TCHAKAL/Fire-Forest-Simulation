@@ -2,43 +2,44 @@ package ciril.ui;
 
 import javax.swing.JButton;
 
-public class Grille{
+public class Grille {
 
-    JButton[][] matrice;
-    JButton b;
+    JButton[][] matrix;
+    JButton button;
 
-    public Grille(int l, int L){
-        matrice = new JButton[l][L];
-        for(int i = 0; i< l; i++){
-            for(int j = 0; j < L; j++){
-                b = new JButton("0");
-                b.setEnabled(false);
-                matrice[i][j] = b;
+    public Grille(int width, int height) {
+        matrix = new JButton[width][height];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                button = new JButton("0");
+                button.setEnabled(false);
+                matrix[i][j] = button;
             }
         }
     }
 
-    public void addOnFire(int x, int y){
-        matrice[x][y].setText("1");
-        matrice[x][y].setEnabled(false);
-    }
-    public void addOnAsh(int x, int y){
-        matrice[x][y].setText("2");
-        matrice[x][y].setEnabled(false);
-    }
-
-    public void display(){
-        int i,j;
-        for (i=0;i<matrice.length;i++){
-            for (j=0;j<matrice.length;j++){
-                System.out.print(matrice[i][j].getText() + " ");
-            }
-            System.out.println(" ");
-        }
+    /**
+     * Set the state of button in position (x,y) at 1 on fire
+     * @param x
+     * @param y
+     */
+    public void addOnFire(int x, int y) {
+        matrix[x][y].setText("1");
+        matrix[x][y].setEnabled(false);
     }
 
-    public JButton[][] getMatrice() {
-        return matrice;
+    /**
+     * Set the state of button in position (x,y) at 1 at ash
+     * @param x
+     * @param y
+     */
+    public void addOnAsh(int x, int y) {
+        matrix[x][y].setText("2");
+        matrix[x][y].setEnabled(false);
+    }
+
+    public JButton[][] getMatrix() {
+        return matrix;
     }
 
 

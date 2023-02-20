@@ -2,7 +2,7 @@ package ciril.simulation;
 
 import ciril.forest.Forest;
 import ciril.forest.Tree;
-import ciril.ui.Window;
+import ciril.ui.SimulationWindow;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,7 +69,7 @@ public class Simulation {
      * @param probability      integer for the number of probabilty for exemple 1 is 100% 2 is 1/2 == 50% ...
      * @param windowSimulation
      */
-    public void propagate(Forest forest, Tree treeOnFire, int probability, Window windowSimulation) {
+    public void propagate(Forest forest, Tree treeOnFire, int probability, SimulationWindow windowSimulation) {
         //Charger la liste des arbres voisins de l'arbre en feu
         List<Tree> neighbors = treeOnFire.getNeighbors(forest);
         //Changer l'état des arbres voisins de l'arbre en feu avec la propabilité donnée

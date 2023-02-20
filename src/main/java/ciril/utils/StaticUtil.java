@@ -1,7 +1,7 @@
 package ciril.utils;
 
 public interface StaticUtil {
-
+    public static final String APP_TITLE = "Simulation de feu de foret";
     public static final String ASK_FOR_WIDHT = "Veuillez renseigner la largeur de la foret : ";
     public static final String ASK_FOR_HEIGHT = "Veuillez renseigner la hauteur de la foret : ";
     public static final String ASK_FOR_NB_TREE_ON_FIRE = "Veuillez renseigner le nombre d'arbres en feu : ";
@@ -12,5 +12,5 @@ public interface StaticUtil {
     public static final String NB_TREES = "Nombre d'arbres : ";
     public static final String NB_TREES_ASH = "Nombre d'arbres reduits en cendre : ";
     public static final String NB_STAGE_SIMULATION ="Nombre d'étapes de la simulation : ";
-
+    public static final String TIME_OF_SIMULATION ="Temps de la simulation en secondes : ";
 }

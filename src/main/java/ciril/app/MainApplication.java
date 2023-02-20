@@ -3,7 +3,7 @@ package ciril.app;
 import ciril.forest.Forest;
 import ciril.forest.Tree;
 import ciril.simulation.Simulation;
-import ciril.ui.Window;
+import ciril.ui.SimulationWindow;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -19,8 +19,9 @@ public class MainApplication {
     private static Forest forest;
     private static Simulation simulation;
     private static List<Tree> treesOnFire;
-    private static Window windowSimulation;
+    private static SimulationWindow windowSimulation;
     private static Scanner sc;
+    private static long start, end;
 
     public static void main(String[] args) {
         sc = new Scanner(System.in);
@@ -39,8 +40,10 @@ public class MainApplication {
             displayForest();
             //Lire la propabilité de propagation de feu
             readPropability();
+            start = System.currentTimeMillis();
             //Appeler la methode de propagarion
             propagate(forest, treesOnFire, simulation, probability, windowSimulation);
+            end = System.currentTimeMillis();
             //Afficher l'état final de la foret
             System.out.println(FINAL_STATE);
             displayForest();
@@ -109,7 +112,7 @@ public class MainApplication {
     private static void displayForest() {
         forest.displayForest();
         if (windowSimulation == null) {
-            windowSimulation = new Window();
+            windowSimulation = new SimulationWindow();
             windowSimulation.displayForest(forest);
         }
     }
@@ -132,7 +135,7 @@ public class MainApplication {
      * @param probability      probability of propagation
      * @param windowSimulation UI for the app
      */
-    private static void propagate(Forest forest, List<Tree> treesOnFire, Simulation simulation, int probability, Window windowSimulation) {
+    private static void propagate(Forest forest, List<Tree> treesOnFire, Simulation simulation, int probability, SimulationWindow windowSimulation) {
         //Pour chaque point en feu on fait la windowSimulation de la propagation
         for (Tree treeOnFire : treesOnFire) {
             simulation.propagate(forest, treeOnFire, probability, windowSimulation);
@@ -146,15 +149,17 @@ public class MainApplication {
      * @param simulation       the class simulation
      * @param windowSimulation UI for the app to add a dialog in
      */
-    private static void showDialogStatistics(Forest forest, Simulation simulation, Window windowSimulation) {
+    private static void showDialogStatistics(Forest forest, Simulation simulation, SimulationWindow windowSimulation) {
         JOptionPane.showMessageDialog(windowSimulation.getFrameSimulation(),
                 NB_TREES + forest.getGrille().length * forest.getGrille()[0].length +
                         "\n" + NB_TREES_ASH + forest.getNbAsh() +
-                        "\n" + NB_STAGE_SIMULATION + simulation.getNbStage()
+                        "\n" + NB_STAGE_SIMULATION + simulation.getNbStage()+
+                        "\n" + TIME_OF_SIMULATION + (end-start)/1000
 
         );
         System.out.println(NB_TREES + width * height);
         System.out.println(NB_TREES_ASH + forest.getNbAsh());
         System.out.println(NB_STAGE_SIMULATION + simulation.getNbStage());
+        System.out.println(TIME_OF_SIMULATION + (end-start)/1000);
     }
 }
