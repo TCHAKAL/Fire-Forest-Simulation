@@ -20,7 +20,7 @@ public class Window {
         matrix.setBackground(Color.BLACK);
     }
 
-    public void displayForest(Forest forest) throws InterruptedException {
+    public void displayForest(Forest forest) {
         frameSimulation.setTitle("Simulation de feu de foret");
         frameSimulation.setVisible(true);
         frameSimulation.setContentPane(matrix);
@@ -29,10 +29,9 @@ public class Window {
     }
 
 
-    public void refreshContent(Forest forest) throws InterruptedException {
+    public void refreshContent(Forest forest) {
         matrix.removeAll();
         matrix.validate();//valider le suppression
-
 
         int l = forest.getGrille().length;
         int h = forest.getGrille()[0].length;
@@ -48,11 +47,15 @@ public class Window {
             }
         }
         displayMatrix(grille.getMatrice());
-       // long start = System.currentTimeMillis();
+        // long start = System.currentTimeMillis();
 
         matrix.revalidate();
         matrix.repaint();
-        Thread.sleep(500);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

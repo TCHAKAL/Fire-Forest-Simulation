@@ -3,10 +3,16 @@ package ciril.simulation;
 import ciril.forest.Forest;
 import ciril.forest.Tree;
 import ciril.ui.Window;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 public class Simulation {
+
+    private int nbStage =0;
 
     /**
      * Change the state of cell in a forest
@@ -27,6 +33,7 @@ public class Simulation {
                     break;
                 case 1:  //Case arbre en feu ==> elle passera à l'état cendre
                     forest.getGrille()[tree.getX()][tree.getY()] = 2;
+                    forest.setNbAsh(forest.getNbAsh()+1);
                     break;
             }
         }
@@ -63,8 +70,7 @@ public class Simulation {
      * @param probability integer for the number of probabilty for exemple 1 is 100% 2 is 1/2 == 50% ...
      * @param simulation
      */
-    public static void propagate(Forest forest, Tree treeOnFire, int probability, Window simulation) throws InterruptedException {
-
+    public void propagate(Forest forest, Tree treeOnFire, int probability, Window simulation) {
         //Charger la liste des arbres voisins de l'arbre en feu
         List<Tree> neighbors = treeOnFire.getNeighbors(forest);
         //Changer l'état des arbres voisins de l'arbre en feu avec la probalité donnée
@@ -72,8 +78,11 @@ public class Simulation {
         //changer l'état de l'arbre en feu à l'état cendre
         changeState(forest, treeOnFire);
         //afficher la foret à l'instant t+1
-        forest.displayForest();
+        //forest.displayForest();
         simulation.displayForest(forest);
+        //Incrémenter le nombre d'état
+         setNbStage(getNbStage()+1);
+
         //Pour chaque voisin à l'état 0 (arbre vivant) alors propager ( appel récursive)
         for (Tree neighbor : neighbors) {
             if (forest.getGrille()[neighbor.getX()][neighbor.getY()] == 1) {
@@ -84,6 +93,7 @@ public class Simulation {
 
     /**
      * Check tree if it's inside the forest
+     *
      * @param forest
      * @param tree
      * @return boolean

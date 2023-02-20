@@ -8,16 +8,21 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Tree {
 
     //Un arbre est représenté par ses coordonnées dans la grille x et y
     private int x;
     private int y;
+
+    public Tree(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     @Override
     public String toString() {
@@ -86,12 +91,14 @@ public class Tree {
 
     /**
      * Method to generate a probability according to the input number
-     * Exemple : if nbProbabilty = 5 then the probabilty = 1/5 = 20%
+     * Exemple : if probabilty = 5 then the probabilty = 1/5 = 20%
      *
-     * @param nbProbabilty integer for the number of probabilty
+     * @param probabilty integer for the number of probabilty
      * @return boolean to apply probability
      */
-    public boolean isPropagable(int nbProbabilty) {
-        return nbProbabilty == 0 ? false : new Random().nextInt(nbProbabilty) == 0;
+    public boolean isPropagable(int probabilty) {
+        //TODO complete the function of probabilities
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
+        return probabilty == 0 ? false : randomNum <= probabilty;
     }
 }

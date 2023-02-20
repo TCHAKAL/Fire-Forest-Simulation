@@ -15,6 +15,8 @@ public class Forest {
     //Une foret est resprésenté par une grille 2D
     private int[][] grille;
 
+    private int nbAsh = 0;
+
     /**
      * Method that create a new forest with a random values
      *
