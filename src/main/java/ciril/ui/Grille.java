@@ -7,6 +7,11 @@ public class Grille {
     JButton[][] matrix;
     JButton button;
 
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public Grille(int width, int height) {
         matrix = new JButton[width][height];
         for (int i = 0; i < width; i++) {
@@ -41,6 +46,5 @@ public class Grille {
     public JButton[][] getMatrix() {
         return matrix;
     }
-
 
 }

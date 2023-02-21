@@ -25,8 +25,9 @@ public class MainApplication {
 
     public static void main(String[] args) {
         sc = new Scanner(System.in);
-        simulation = new Simulation();
         while (true) {
+            //Instantier la simulation
+            simulation = new Simulation();
             //Lire les dimentions de la foret
             readDimensions();
             //Créer et remplir la foret
@@ -136,9 +137,11 @@ public class MainApplication {
      * @param windowSimulation UI for the app
      */
     private static void propagate(Forest forest, List<Tree> treesOnFire, Simulation simulation, int probability, SimulationWindow windowSimulation) {
-        //Pour chaque point en feu on fait la windowSimulation de la propagation
-        for (Tree treeOnFire : treesOnFire) {
-            simulation.propagate(forest, treeOnFire, probability, windowSimulation);
+        if (forest.isValidForest() && treesOnFire != null) {
+            //Pour chaque point en feu on fait la windowSimulation de la propagation
+            for (Tree treeOnFire : treesOnFire) {
+                simulation.propagate(forest, treeOnFire, probability, windowSimulation);
+            }
         }
     }
 
@@ -150,16 +153,18 @@ public class MainApplication {
      * @param windowSimulation UI for the app to add a dialog in
      */
     private static void showDialogStatistics(Forest forest, Simulation simulation, SimulationWindow windowSimulation) {
-        JOptionPane.showMessageDialog(windowSimulation.getFrameSimulation(),
-                NB_TREES + forest.getGrille().length * forest.getGrille()[0].length +
-                        "\n" + NB_TREES_ASH + forest.getNbAsh() +
-                        "\n" + NB_STAGE_SIMULATION + simulation.getNbStage()+
-                        "\n" + TIME_OF_SIMULATION + (end-start)/1000
+        if (forest.isValidForest()) {
+            JOptionPane.showMessageDialog(windowSimulation.getFrameSimulation(),
+                    NB_TREES + forest.getGrille().length * forest.getGrille()[0].length +
+                            "\n" + NB_TREES_ASH + forest.getNbAsh() +
+                            "\n" + NB_STAGE_SIMULATION + simulation.getNbStage() +
+                            "\n" + TIME_OF_SIMULATION + (end - start) / 1000
 
-        );
-        System.out.println(NB_TREES + width * height);
-        System.out.println(NB_TREES_ASH + forest.getNbAsh());
-        System.out.println(NB_STAGE_SIMULATION + simulation.getNbStage());
-        System.out.println(TIME_OF_SIMULATION + (end-start)/1000);
+            );
+            System.out.println(NB_TREES + width * height);
+            System.out.println(NB_TREES_ASH + forest.getNbAsh());
+            System.out.println(NB_STAGE_SIMULATION + simulation.getNbStage());
+            System.out.println(TIME_OF_SIMULATION + (end - start) / 1000);
+        }
     }
 }

@@ -3,6 +3,7 @@ package ciril.simulation;
 import ciril.forest.Forest;
 import ciril.forest.Tree;
 import ciril.ui.SimulationWindow;
+import ciril.utils.StaticUtil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,15 +48,17 @@ public class Simulation {
      * @param probability
      */
     public static void changeStateListTreesWithProbability(Forest forest, List<Tree> listTrees, int probability) {
-        //Pour chaque arbre on vérifie si l'arbre est dans la foret
-        for (Tree tree : listTrees) {
-            if (checkTreeIncideForest(forest, tree)) {
-                //Si la cellule contient un arbre en feu alors on change l'état à cendre
-                if (forest.getGrille()[tree.getX()][tree.getY()] == 1) {
-                    changeState(forest, tree);
-                } else if (forest.getGrille()[tree.getX()][tree.getY()] == 0 && tree.isPropagable(probability)) {
-                    // Si la cellule contient un arbre vivant et probablement propageable alors on change l'état
-                    changeState(forest, tree);
+        if (forest.isValidForest() && listTrees != null) {
+            //Pour chaque arbre on vérifie si l'arbre est dans la foret
+            for (Tree tree : listTrees) {
+                if (checkTreeIncideForest(forest, tree)) {
+                    //Si la cellule contient un arbre en feu alors on change l'état à cendre
+                    if (forest.getGrille()[tree.getX()][tree.getY()] == 1) {
+                        changeState(forest, tree);
+                    } else if (forest.getGrille()[tree.getX()][tree.getY()] == 0 && tree.isPropagable(probability)) {
+                        // Si la cellule contient un arbre vivant et probablement propageable alors on change l'état
+                        changeState(forest, tree);
+                    }
                 }
             }
         }
@@ -97,10 +100,13 @@ public class Simulation {
      * @return boolean
      */
     private static boolean checkTreeIncideForest(Forest forest, Tree tree) {
-//        if (tree.getX() > forest.getGrille().length || tree.getY() > forest.getGrille()[tree.getX()].length) {
-//            System.err.println("La position indiqué est en dehors de la foret");
-//            return false;
-//        }
-        return true;
+        if (forest.isValidForest() && tree != null) {
+            if (tree.getX() < forest.getGrille().length && tree.getX() >= 0
+                    && tree.getY() < forest.getGrille()[0].length && tree.getY() >= 0) {
+                return true;
+            }
+        }
+        System.err.println(StaticUtil.ERR_TREE_OUT_OF_FOREST);
+        return false;
     }
 }

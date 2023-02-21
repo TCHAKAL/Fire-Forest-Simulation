@@ -11,6 +11,8 @@ public interface StaticUtil {
     public static final String ASK_FOR_PROBABILITY = "Veuillez renseigner la probabilité de propagation en % : ";
     public static final String NB_TREES = "Nombre d'arbres : ";
     public static final String NB_TREES_ASH = "Nombre d'arbres reduits en cendre : ";
-    public static final String NB_STAGE_SIMULATION ="Nombre d'étapes de la simulation : ";
-    public static final String TIME_OF_SIMULATION ="Temps de la simulation en secondes : ";
+    public static final String NB_STAGE_SIMULATION = "Nombre d'étapes de la simulation : ";
+    public static final String TIME_OF_SIMULATION = "Temps de la simulation en secondes : ";
+    public static final String ERR_TREE_OUT_OF_FOREST = "La position indiqué est en dehors de la foret";
+    public static final String ERR_INVALID_FOREST = "Vous ne pouvez pas insantier une foret avec des dimentions <= 0";
 }

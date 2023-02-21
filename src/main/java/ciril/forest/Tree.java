@@ -46,15 +46,15 @@ public class Tree {
      */
     public List<Tree> getNeighbors(Forest forest) {
         //Les voisins de forest(x,y) sont forest(x, y+1), forest(x, y-1), forest(x-1, y), forest(x+1,y)
-        if (forest != null) {
+        if (forest.isValidForest()) {
             //Récupérer les dimentions de la foret
-            int l = forest.getGrille().length, //largeur
-                    h = forest.getGrille()[0].length; //hauteur
-            if (l > 0 && h > 0) {
+            int width = forest.getGrille().length, //largeur
+                    height = forest.getGrille()[0].length; //hauteur
+            if (width > 0 && height > 0) {
                 //Déclarer la liste des voisins
                 List<Tree> neighbors = new ArrayList<>();
                 //Voisin à droite
-                if (x + 1 < l) {
+                if (x + 1 < width) {
                     neighbors.add(new Tree(x + 1, y));
                 }
                 //Voisin à gauche
@@ -66,7 +66,7 @@ public class Tree {
                     neighbors.add(new Tree(x, y - 1));
                 }
                 //Voisin en dessous
-                if (y + 1 < h) {
+                if (y + 1 < height) {
                     neighbors.add(new Tree(x, y + 1));
                 }
                 return neighbors;
@@ -104,7 +104,6 @@ public class Tree {
      * @return boolean to apply probability
      */
     public boolean isPropagable(int probabilty) {
-        //TODO complete the function of probabilities
         int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
         return probabilty == 0 ? false : randomNum <= probabilty;
     }
