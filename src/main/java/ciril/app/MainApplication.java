@@ -93,9 +93,9 @@ public class MainApplication {
         //Demander à l'utilisateur les coordonnées de chaque arbre de feu
         for (int n = 0; n < nbTreesOnFire; n++) {
             System.out.println(ASK_FOR_POSITION_TREE_ON_FIRE + n);
-            System.out.print(" x (entre 0 et " + width + "): ");
+            System.out.print(" x (entre 0 et " + (width-1) + "): ");
             int x = sc.nextInt();
-            System.out.print(" y (entre 0 et " + height + "): ");
+            System.out.print(" y (entre 0 et " + (height-1) + "): ");
             int y = sc.nextInt();
             //Vérifier si l'arbre n'est pas déjà insérer dans la liste
             if (!treesOnFire.contains(new Tree(x, y))) {

@@ -12,6 +12,7 @@ public class Forest {
 
     //Une foret est resprésenté par une grille 2D
     private int[][] grille;
+    //Nombre de cases reduites en feu
     private int nbAsh;
 
 

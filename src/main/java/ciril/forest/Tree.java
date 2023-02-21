@@ -1,14 +1,11 @@
 package ciril.forest;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
@@ -19,6 +16,7 @@ public class Tree {
     //Un arbre est représenté par ses coordonnées dans la grille x et y
     private int x;
     private int y;
+    private int z;
 
     public Tree(int x, int y) {
         this.x = x;
@@ -53,19 +51,19 @@ public class Tree {
             if (width > 0 && height > 0) {
                 //Déclarer la liste des voisins
                 List<Tree> neighbors = new ArrayList<>();
-                //Voisin à droite
-                if (x + 1 < width) {
+                //Voisin au dessus
+                if (x + 1 < width && (forest.getGrille()[x+1][y]!=3 || forest.getGrille()[x+1][y]!=4)) {
                     neighbors.add(new Tree(x + 1, y));
                 }
-                //Voisin à gauche
+                //Voisin en dessous
                 if (0 <= x - 1) {
                     neighbors.add(new Tree(x - 1, y));
                 }
-                //Voisin au dessus
+                //Voisin à gauche
                 if (0 <= y - 1) {
                     neighbors.add(new Tree(x, y - 1));
                 }
-                //Voisin en dessous
+                //Voisin à droite
                 if (y + 1 < height) {
                     neighbors.add(new Tree(x, y + 1));
                 }
